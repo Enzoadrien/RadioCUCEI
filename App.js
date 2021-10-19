@@ -1,15 +1,19 @@
 
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image, ScrollView, Text} from 'react-native';
 import Sound from 'react-native-sound';
 import Slider from '@react-native-community/slider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
 import { STATEMENT_TYPES } from '@babel/types';
+
+
 
 
 const {width, height} = Dimensions.get('window');
 //Categoria del sonido.
 Sound.setCategory('Playback');
+ 
 
 
 
@@ -28,34 +32,34 @@ var audio = new Sound(
 
 const App = () => {
   const [playing, setPlaying] = useState();
+  const [dato, setdato] = useState("-98%")
 
-  useEffect(() => {
-    audio.setVolume(0);
-    return () => {
-      audio.release();
-    };
-  }, []);
   const playPause = () => {
-    if (audio.isPlaying()) {
+    if (playing) {
       audio.pause();
       setPlaying(false);
+      setdato("-98%");
+      console.log("entro en pause");
     } else {
       setPlaying(true);
-      audio.play(success => {
-        if (success) {
-          setPlaying(false);
-          console.log('terminó de reproducir con éxito');
-        } else {
-          setPlaying(false);
-          console.log('la reproducción falló debido a errores de decodificación de audio');
-        }
-      });
+      setdato(170);
+      audio.play();
+      console.log("entro en play");
     }
   };
 
+  const btnplaPause = () => {
+    if(playing){
+       return  <Ionicons name={"pause-circle-outline"} size={80} color="orange" />
+    }else{
+        return <Ionicons name={"play-circle-outline"} size={80} color="orange" />
+    }
+  }
+
 
   return (
-    <SafeAreaView style={estilos.contenedor}>
+
+    <LinearGradient colors={['orange', '#181818','#181818']} style={estilos.contenedor}>
       <View style={estilos.maincontenedor}>
         <View style={estilos.contenedorimagen}>
           <Image 
@@ -64,22 +68,32 @@ const App = () => {
           />
 
         </View>
-        <View>
-          <Slider 
-          style ={estilos.volumen}
-          minimumValue={0}
-          maximunValue={100}
-          step ={0.1}
-          thumbTintColor="orange"
-          minimumTrackTintColor="orange"
-          maximumTrackTintColor="#FFD369"
-          onSlidingComplete={()=>{}} />
+        <View style={estilos.barrcontenedor}>
+        <View style={estilos.barrsuperior}>
+        <Text style={estilos.bardatos}>0</Text>
+        <Text style={estilos.bardatos}>|</Text>
+        <Text style={estilos.bardatos}>20</Text>
+        <Text style={estilos.bardatos}>|</Text>
+        <Text style={estilos.bardatos}>60</Text>
+        <Text style={estilos.bardatos}>|</Text>
+        <Text style={estilos.bardatos}>80</Text>
+        <Text style={estilos.bardatos}>|</Text>
+        <Text style={estilos.bardatos}>100</Text>
+      </View>
+      <View style={estilos.barcentro}> 
+       <View style={{width: 10, height: "100%", backgroundColor: "red", marginLeft: dato}}/>
+
+      </View>
+      <View style={estilos.barbajo}>
+        
+      </View>
+          
         </View>
 
         <View style={estilos.playcontenedor}>
           
           <TouchableOpacity onPress={playPause}>
-            <Ionicons name={   "ios-pause-circle"} size={80} color="orange" />
+          {btnplaPause()}
           </TouchableOpacity>
 
         </View>
@@ -87,11 +101,25 @@ const App = () => {
 
       </View>
       <View style={estilos.bajocontenedor}>
-      
+        <View style={estilos.iconcontenedor}>
+        <TouchableOpacity style={{justifyContent: 'space-between', margin: 5}} >
+          <Ionicons name={"time-outline"} size={45} color="orange" />
+          </TouchableOpacity>
+          <TouchableOpacity style={{ justifyContent: 'space-between', margin: 5}} >
+          <Ionicons name={"musical-notes-outline"} size={45} color="orange" />
+          </TouchableOpacity>
+          <TouchableOpacity style={{justifyContent: 'space-between',margin: 5}} >
+          <Ionicons name={"logo-instagram"} size={45} color="orange" />
+          </TouchableOpacity>
+          <TouchableOpacity style={{ justifyContent: 'space-between', margin: 5}} >
+          <Ionicons name={"add-outline"} size={45} color="orange" />
+          </TouchableOpacity>
+
+        </View>
   
       </View>
       
-    </SafeAreaView>
+    </LinearGradient>
    
       
 
@@ -104,7 +132,7 @@ const App = () => {
 const estilos = StyleSheet.create({
   contenedor: {
     flex: 1,
-    backgroundColor: '#242424',
+   
     
   },
   maincontenedor:{
@@ -116,12 +144,13 @@ const estilos = StyleSheet.create({
     borderTopColor:'#393E46',
     borderTopWidth:2,
     width: '100%',
-    alignItems: 'center',
-    paddingVertical:35,
+ 
+
+    
   },
   contenedorimagen:{
-    width:250,
-    height: 250,
+    width:200,
+    height: 200,
     marginBottom:100,
 
   },
@@ -130,12 +159,39 @@ const estilos = StyleSheet.create({
     height: '100%',
 
   },
-  volumen:{
-    width: 300,
-    height: 40,
-    marginTop:-50,
-    flexDirection: 'row',
-
+  barrcontenedor:{
+    width:  '70%',
+    height: 85,
+  },
+  barrsuperior:{
+    width: "100%",
+    height: 35, 
+    backgroundColor: "#1F1D1D", 
+    justifyContent: "space-between", 
+    borderBottomColor: "#FEFDFD", 
+    borderBottomWidth: 5, 
+    flexDirection: "row",
+  },
+  bardatos:{
+    color: '#FAF9F9', 
+    fontSize: 12,
+  },
+  barcentro:{
+    width: "100%", 
+    height: 15, 
+    backgroundColor: "#666262",
+    alignItems: "center", 
+    borderLeftWidth: 5, 
+    borderRightWidth: 5,
+  },
+  barbajo:{
+    width: "100%", 
+    height: 35, 
+    backgroundColor: "#1F1D1D", 
+    justifyContent: "space-between", 
+    borderTopColor: "#FEFDFD", 
+    borderTopWidth: 2.5, 
+    flexDirection: "row",
   },
   playcontenedor:{
     flexDirection: 'row',
@@ -150,8 +206,12 @@ const estilos = StyleSheet.create({
     backgroundColor:'#f06c24',
     justifyContent: 'center',
     alignItems: 'center',
-  }
-
+  },
+  iconcontenedor:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
+  },
 
 });
 
