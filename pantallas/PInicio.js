@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image, ScrollView, Text} from 'react-native';
 import Sound from 'react-native-sound';
-import Slider from '@react-native-community/slider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import SplashScreen from 'react-native-splash-screen'
@@ -15,26 +14,25 @@ import { STATEMENT_TYPES } from '@babel/types';
 const {width, height} = Dimensions.get('window');
 //Categoria del sonido.
 Sound.setCategory('Playback');
- 
+ var Dat = 0;
 
 
+  var audio = new Sound(
+    'http://s3.streammonster.com:8225/stream',
+      null,
+      error => {
+        if (error) {
+          console.log('No pudo cargar el sonido', error);
+          return;
+        }else{
+          console.log("cargo el sonido");
+          return ( SplashScreen.hide());
+          
+        }
+      },
+    );
 
-var audio = new Sound(
-'http://s3.streammonster.com:8225/stream',
-  null,
-  error => {
-    if (error) {
-      console.log('No pudo cargar el sonido', error);
-      return;
-    }else{
-      console.log("cargo el sonido")
 
-    }
-    
-    // if loaded successfully
-    
-  },
-);
  
 const App = () => {
   const [playing, setPlaying] = useState();
@@ -68,6 +66,7 @@ const App = () => {
   return (
 
     <LinearGradient colors={['orange', '#181818','#181818']} style={estilos.contenedor}>
+
       <View style={estilos.maincontenedor}>
         <View style={estilos.contenedorimagen}>
           <Image 

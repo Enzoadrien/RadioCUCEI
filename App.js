@@ -7,14 +7,8 @@ import Sound from 'react-native-sound';
 
 
 
-const App = () => {
- 
-  
-  useEffect(()=> {
-    
-    SplashScreen.hide()
-  },[])
-  
+const App = (props) => {
+
   return(
     <NavigationContainer>
       <Tabs />
