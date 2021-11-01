@@ -22,7 +22,7 @@ const Tabs = () => {
                 left: 16,
                 right: 16,
                 borderRadius: 10,
-                backgroundColor: '#181818',
+                backgroundColor: '#040404',
 
 
             }

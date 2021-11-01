@@ -1,29 +1,32 @@
-import React from 'react';
-import { View, Text, Image, ScrollView, TextInput } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image, ScrollView, Text} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
-const Apps = () => {
+
+  
+
+
+ 
+const Tablas = () => {
+
   return (
-    <ScrollView>
-      <Text>Some text</Text>
-      <View>
-        <Text>Some more text</Text>
-        <Image
-          source={{
-            uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
-          }}
-          style={{ width: 200, height: 200 }}
-        />
-      </View>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1
-        }}
-        defaultValue="You can type in me"
-      />
-    </ScrollView>
+
+    <LinearGradient colors={['orange', '#040404','#040404']} style={estilos.contenedor}>
+
+    </LinearGradient>
   );
 }
 
-export default Apps;
+
+const estilos = StyleSheet.create({
+  contenedor: {
+    flex: 1,
+   
+    
+  }
+ 
+
+});
+
+
+export default Tablas;

@@ -6,8 +6,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import SplashScreen from 'react-native-splash-screen'
 
 
-import { STATEMENT_TYPES } from '@babel/types';
-
 
 
 
@@ -26,7 +24,7 @@ Sound.setCategory('Playback');
           return;
         }else{
           console.log("cargo el sonido");
-          return ( SplashScreen.hide());
+          return ( SplashScreen.hide() );
           
         }
       },
@@ -56,16 +54,16 @@ const App = () => {
 
   const btnplaPause = () => {
     if(playing){
-       return  <Ionicons name={"pause-circle-outline"} size={80} color="orange" />
+       return  <Ionicons name={"pause-circle-outline"} size={100} color="orange" />
     }else{
-        return <Ionicons name={"play-circle-outline"} size={80} color="orange" />
+        return <Ionicons name={"play-circle-outline"} size={100} color="orange" />
     }
   }
 
 
   return (
 
-    <LinearGradient colors={['orange', '#181818','#181818']} style={estilos.contenedor}>
+    <LinearGradient colors={['orange', '#040404','#040404']} style={estilos.contenedor}>
 
       <View style={estilos.maincontenedor}>
         <View style={estilos.contenedorimagen}>
@@ -130,33 +128,32 @@ const estilos = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bajocontenedor:{
-    borderTopColor:'#393E46',
-    borderTopWidth:2,
-    width: '100%',
- 
-
-    
-  },
   contenedorimagen:{
-    width:200,
-    height: 200,
+    width:'56%',
+    height: '30%',
     marginBottom:100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '-10%',
+    marginBottom: '15%',
 
   },
   logo:{
-    width: '100%',
-    height: '100%',
+    width: '85%',
+    height: '85%',
 
   },
   barrcontenedor:{
+    marginTop: '0%',
+    marginBottom: '25%',
     width:  '70%',
-    height: 85,
+    height: '13%',
+    backgroundColor: 'red',
   },
   barrsuperior:{
     width: "100%",
-    height: 35, 
-    backgroundColor: "#1F1D1D", 
+    height: '45%', 
+    backgroundColor: '#040404', 
     justifyContent: "space-between", 
     borderBottomColor: "#FEFDFD", 
     borderBottomWidth: 5, 
@@ -176,8 +173,8 @@ const estilos = StyleSheet.create({
   },
   barbajo:{
     width: "100%", 
-    height: 35, 
-    backgroundColor: "#1F1D1D", 
+    height: '45%', 
+    backgroundColor: '#040404', 
     justifyContent: "space-between", 
     borderTopColor: "#FEFDFD", 
     borderTopWidth: 2.5, 
@@ -185,14 +182,14 @@ const estilos = StyleSheet.create({
   },
   playcontenedor:{
     flexDirection: 'row',
-    width:'60%',
+    width:'25%',
     justifyContent: 'space-between',
-    marginTop: 15,
+    marginTop: '-10%',
     justifyContent: 'center',
   },
   playBtn: {
     width: '50%',
-    height:50,
+    height: '20%',
     backgroundColor:'#f06c24',
     justifyContent: 'center',
     alignItems: 'center',
