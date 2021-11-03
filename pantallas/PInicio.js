@@ -34,7 +34,8 @@ Sound.setCategory('Playback');
  
 const App = () => {
   const [playing, setPlaying] = useState();
-  const [dato, setdato] = useState('1%')
+  const [dato, setdato] = useState('1%');
+  const [estacion, setEstacion] = useState(0);
 
 
 
@@ -43,10 +44,12 @@ const App = () => {
       audio.pause();
       setPlaying(false);
       setdato('1%');
+      setEstacion(0);
       console.log("entro en pause");
     } else {
       setPlaying(true);
       setdato('92%');
+      setEstacion(96.7);
       audio.play();
       console.log("entro en play");
     }
@@ -100,6 +103,11 @@ const App = () => {
             <Text style={estilos.textonumeros}>|</Text>
             <Text style={estilos.textonumeros}>|</Text>
             <Text style={estilos.textonumeros}>    |</Text>
+          </View>
+          <View style={estilos.centro}>
+            <Text style={estilos.textonum}>{estacion}</Text>
+            <Text style={estilos.MHz}>MHz</Text>
+
           </View>
 
           <View style={estilos.barbajo}>
@@ -187,12 +195,29 @@ const estilos = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
+  centro:{
+    width: '20%',
+    height: '50%',
+    marginLeft: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  textonum:{
+    fontSize:25,
+
+  },
+  MHz:{
+    marginTop: '10%',
+   fontSize:15,
+  },
   barbajo:{
     width: '100%',
     height: '20%',
-    marginTop: '10%',
+    marginTop: '-1%',
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+  
 
   },
  
