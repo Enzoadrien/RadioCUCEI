@@ -34,7 +34,7 @@ Sound.setCategory('Playback');
  
 const App = () => {
   const [playing, setPlaying] = useState();
-  const [dato, setdato] = useState("-98%")
+  const [dato, setdato] = useState('1%')
 
 
 
@@ -42,11 +42,11 @@ const App = () => {
     if (playing) {
       audio.pause();
       setPlaying(false);
-      setdato("-98%");
+      setdato('1%');
       console.log("entro en pause");
     } else {
       setPlaying(true);
-      setdato(170);
+      setdato('92%');
       audio.play();
       console.log("entro en play");
     }
@@ -73,27 +73,47 @@ const App = () => {
           />
 
         </View>
-        <View style={estilos.barrcontenedor}>
-        <View style={estilos.barrsuperior}>
-        <Text style={estilos.bardatos}>0</Text>
-        <Text style={estilos.bardatos}>|</Text>
-        <Text style={estilos.bardatos}>20</Text>
-        <Text style={estilos.bardatos}>|</Text>
-        <Text style={estilos.bardatos}>60</Text>
-        <Text style={estilos.bardatos}>|</Text>
-        <Text style={estilos.bardatos}>80</Text>
-        <Text style={estilos.bardatos}>|</Text>
-        <Text style={estilos.bardatos}>100</Text>
-      </View>
-      <View style={estilos.barcentro}> 
-       <View style={{width: 10, height: "100%", backgroundColor: "red", marginLeft: dato}}/>
-
-      </View>
-      <View style={estilos.barbajo}>
         
-      </View>
-          
-        </View>
+        <LinearGradient colors={['orange', '#a36a00','#573800']} style={estilos.contenedorbarra}>
+          <View style={estilos.basuperior}>
+            <Text style={estilos.textonumeros}>0</Text>
+            <Text style={estilos.textonumeros}>10</Text>
+            <Text style={estilos.textonumeros}>20</Text>
+            <Text style={estilos.textonumeros}>30</Text>
+            <Text style={estilos.textonumeros}>40</Text>
+            <Text style={estilos.textonumeros}>50</Text>
+            <Text style={estilos.textonumeros}>60</Text>
+            <Text style={estilos.textonumeros}>70</Text>
+            <Text style={estilos.textonumeros}>80</Text>
+            <Text style={estilos.textonumeros}>90</Text>
+            <Text style={estilos.textonumeros}>100</Text>
+          </View>
+          <View style={estilos.lineassupe}>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>    |</Text>
+          </View>
+
+          <View style={estilos.barbajo}>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>  |</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+            <Text style={estilos.textonumeros}>|</Text>
+          </View>
+          <View style={{backgroundColor: '#f61c04', width: '1%', height: '100%', marginTop: '-22%', marginLeft:dato}}>
+
+          </View>
+
+        </LinearGradient>
 
         <View style={estilos.playcontenedor}>
           
@@ -143,43 +163,39 @@ const estilos = StyleSheet.create({
     height: '85%',
 
   },
-  barrcontenedor:{
-    marginTop: '0%',
-    marginBottom: '25%',
-    width:  '70%',
-    height: '13%',
-    backgroundColor: 'red',
+  contenedorbarra:{
+    marginTop: '-5%',
+    marginBottom: '20%',
+    width: '85%',
+    height: '10%',
+    borderRadius: 10,
+
   },
-  barrsuperior:{
-    width: "100%",
-    height: '45%', 
-    backgroundColor: '#040404', 
-    justifyContent: "space-between", 
-    borderBottomColor: "#FEFDFD", 
-    borderBottomWidth: 5, 
-    flexDirection: "row",
+  basuperior:{
+    width: '100%',
+    height: '20%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+
   },
-  bardatos:{
-    color: '#FAF9F9', 
-    fontSize: 12,
+  textonumeros:{
+    fontSize:10,
   },
-  barcentro:{
-    width: "100%", 
-    height: 15, 
-    backgroundColor: "#666262",
-    alignItems: "center", 
-    borderLeftWidth: 5, 
-    borderRightWidth: 5,
+  lineassupe:{
+    marginTop: '-1%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   barbajo:{
-    width: "100%", 
-    height: '45%', 
-    backgroundColor: '#040404', 
-    justifyContent: "space-between", 
-    borderTopColor: "#FEFDFD", 
-    borderTopWidth: 2.5, 
-    flexDirection: "row",
+    width: '100%',
+    height: '20%',
+    marginTop: '10%',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly'
+
   },
+ 
   playcontenedor:{
     flexDirection: 'row',
     width:'25%',
