@@ -60,6 +60,3 @@ buck-out/
 /ios/Pods/
 
 
-.editorconfig
-.eslintrc.js
-.prettierrc.js
