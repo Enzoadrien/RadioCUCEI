@@ -36,8 +36,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
-*.editorconfig
-*.eslintrc.js
+
 
 # BUCK
 buck-out/
@@ -62,5 +61,7 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 
-
+.editorconfig
+.eslintrc.js
+.prettierrc.js
 
