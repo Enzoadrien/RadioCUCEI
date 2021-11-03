@@ -37,7 +37,7 @@ npm-debug.log
 yarn-error.log
 
 .editorconfig
-..eslintrc.js
+.eslintrc.js
 
 # BUCK
 buck-out/
