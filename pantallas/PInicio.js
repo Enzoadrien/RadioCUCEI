@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image, ScrollView, Text} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions,Image, BackHandler, Text} from 'react-native';
 import Sound from 'react-native-sound';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -38,6 +38,10 @@ const App = () => {
   const [estacion, setEstacion] = useState(0);
 
 
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () => backHandler.remove()
+  }, [])
 
   const playPause = () => {
     if (playing) {
