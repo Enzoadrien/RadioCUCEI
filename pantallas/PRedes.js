@@ -4,7 +4,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Ioniconss from 'react-native-vector-icons/FontAwesome';
 
+const boton = (props) => {
+  return(
 
+    <TouchableOpacity onPress={() => Linking.openURL(props.url)} style={estilos.boton}>
+    <Ionicons name={props.iconore} size={50} color='#FCF7F6' />
+   </TouchableOpacity>
+
+  );
+ 
+}
 
 
 const Redes = () => {
@@ -26,6 +35,7 @@ const Redes = () => {
         <Text style={estilos.texto2}>EN  NUESTRAS   REDES   SOCIALES</Text>
       </View>
       <View style={estilos.iconoscontenedor}>
+      
         <TouchableOpacity onPress={() => Linking.openURL('https://www.facebook.com/RadioCUCEI')} style={estilos.boton}>
         <Ionicons name={"logo-facebook"} size={50} color='#FCF7F6' />
         </TouchableOpacity>

@@ -4,6 +4,7 @@ import Sound from 'react-native-sound';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import SplashScreen from 'react-native-splash-screen'
+import Emisor from '../src/Estilos/Emisor';
 
 
 
@@ -81,52 +82,8 @@ const App = () => {
 
         </View>
         
-        <LinearGradient colors={['orange', '#a36a00','#573800']} style={estilos.contenedorbarra}>
-          <View style={estilos.basuperior}>
-            <Text style={estilos.textonumeros}>0</Text>
-            <Text style={estilos.textonumeros}>10</Text>
-            <Text style={estilos.textonumeros}>20</Text>
-            <Text style={estilos.textonumeros}>30</Text>
-            <Text style={estilos.textonumeros}>40</Text>
-            <Text style={estilos.textonumeros}>50</Text>
-            <Text style={estilos.textonumeros}>60</Text>
-            <Text style={estilos.textonumeros}>70</Text>
-            <Text style={estilos.textonumeros}>80</Text>
-            <Text style={estilos.textonumeros}>90</Text>
-            <Text style={estilos.textonumeros}>100</Text>
-          </View>
-          <View style={estilos.lineassupe}>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>    |</Text>
-          </View>
-          <View style={estilos.centro}>
-            <Text style={estilos.textonum}>{estacion}</Text>
-            <Text style={estilos.MHz}>MHz</Text>
-
-          </View>
-
-          <View style={estilos.barbajo}>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>  |</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-            <Text style={estilos.textonumeros}>|</Text>
-          </View>
-          <View style={{backgroundColor: '#f61c04', width: '1%', height: '100%', marginTop: '-22%', marginLeft:dato}}>
-
-          </View>
-
-        </LinearGradient>
-
+        <Emisor tenumero={estacion} posicion={dato}/>
+        
         <View style={estilos.playcontenedor}>
           
           <TouchableOpacity onPress={playPause}>
